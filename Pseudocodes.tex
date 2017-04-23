@@ -183,7 +183,7 @@
 					\State $count \gets 0$
 					\State $E \gets tol + 1$
 					\State $div \gets y_{1} - y_{0}$
-					\State $y_{1} \gets 1$
+					\State $y_{2} \gets 1$
 					\While {$y_{1} \not= 0$ \textbf{ and } $y_{2} \not= 0$ \textbf{ and } $E > tol$ \textbf{ and } $div \not= 0$ \textbf{ and } $count < iter$}
 						\State $x_{2} \gets x_{1} - ((y_{1} * (x_{1} - x_{0})) / div)$
 						\State $E \gets abs(x_{2} - x_{1})$
