@@ -4,6 +4,7 @@
 \usepackage{algpseudocode}
 
 \begin{document}
+
 	\begin{algorithm}
 		\caption{Incremental Search Method}
 		\begin{algorithmic}[1]
@@ -171,4 +172,45 @@
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
-\end{document}
+	
+	\begin{algorithm}
+		\caption{Secant Method}
+		\begin{algorithmic}[1]
+			\Procedure{Secant}{$x_{0},\ x_{1},\ tol,\ iter$}
+				\State $y_{0} \gets f(x_{0})$
+				\State $y_{1} \gets f(x_{1})$
+				\If {$y_{0} \not= 0$}
+					\State $count \gets 0$
+					\State $E \gets tol + 1$
+					\State $div \gets y_{1} - y_{0}$
+					\State $y_{1} \gets 1$
+					\While {$y_{1} \not= 0$ \textbf{ and } $y_{2} \not= 0$ \textbf{ and } $E > tol$ \textbf{ and } $div \not= 0$ \textbf{ and } $count < iter$}
+						\State $x_{2} \gets x_{1} - ((y_{1} * (x_{1} - x_{0})) / div)$
+						\State $E \gets abs(x_{2} - x_{1})$
+						\State $x_{0} \gets x_{1}$
+						\State $x_{1} \gets x_{2}$
+						\State $y_{0} \gets f(x_{0})$
+						\State $y_{1} \gets f(x_{1})$
+						\State $div \gets y_{1} - y_{0}$
+						\State $y_{2} \gets f(x_{2})$
+						\State $count++$
+					\EndWhile
+					\If {$y_{0} = 0$}
+						\State \textbf{print} "$x_{0}$ is a root"
+					\ElsIf {$y_{2} = 0$}
+						\State \textbf{print} "$x_{2}$ is a root"
+					\ElsIf {$E < tol$}
+						\State \textbf{print} "$x_{0}$ is approximated by $E < tol$"
+					\ElsIf {$div = 0$}
+						\State \textbf{print} "Division by zero"
+					\Else
+						\State \textbf{print} "Failure"
+					\EndIf
+				\Else
+					\State \textbf{print} "$x_{0}$ is a root"
+				\EndIf
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+
+\end{document} 
