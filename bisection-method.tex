@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Bisection Method}
+    \begin{algorithmic}[1]
+      \Procedure{Bisection}{$x_{i},\ x_{s},\ iter,\ tol$}
+        \State $y_{i} \gets f(x_{i})$
+        \State $y_{s} \gets f(x_{s})$
+        \If {$y_{i} = 0$}
+          \State \textbf{print} "$x_{i}$ is root"
+        \ElsIf {$y_{s} = 0$}
+          \State \textbf{print} "$x_{s}$ is root"
+        \ElsIf {$y_{i} * y_{s} > 0$}
+          \State \textbf{print} "Incorrect interval"
+        \Else
+          \State $x_{m} \gets (x_{i} + x_{s}) / 2$
+          \State $y_{m} \gets f(x_{m})$
+          \State $E \gets tol + 1$
+          \State $count \gets 1$
+          \While {$y_{m} \not= 0$ \textbf{ and } $E > tol$ \textbf{ and } $count < iter$}
+            \If {$y_{m} * y_{i} < 0$}
+              \State $x_{s} \gets x_{m}$
+              \State $y_{s} \gets y_{m}$
+            \Else
+              \State $x_{i} \gets x_{m}$
+              \State $y_{i} \gets y_{m}$
+            \EndIf
+            \State $x_{aux} \gets x_{m}$
+            \State $x_{m} \gets (x_{i} + x_{s}) / 2$
+            \State $y_{m} \gets f(x_{m})$
+            \State $E \gets abs(x_{m} - x_{aux})$
+          \EndWhile
+          \If {$y_{m} = 0$}
+            \State \textbf{print} "$x_{m}$ is root"
+          \ElsIf {$E < tol$}
+            \State \textbf{print} "$x_{m}$ is approximated by $E < tol$"
+          \Else
+            \State \textbf{print} "Failure"
+          \EndIf
+        \EndIf
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
