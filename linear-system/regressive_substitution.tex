@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Regressive Substitution Function}
+    \begin{algorithmic}[1]
+      \Procedure{RegressiveSubstitution}{$Ab,\ n$}
+        \State $x_{n} \gets Ab_{nn+1} / Ab_{nn}$
+        \For {$i = n - 1$ \textbf{to} $1$ \textbf{step} $-1$}
+          \State $summ \gets 0$
+          \For {$j = i + 1$ \textbf{to} $n$}
+            \State $summ \gets summ + Ab_{ij} * x_{j}$
+          \EndFor
+          \State $x_{i} \gets (Ab_{in+1} - summ) / Ab_{ii}$
+        \EndFor
+        \State \textbf{return} $x$
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
