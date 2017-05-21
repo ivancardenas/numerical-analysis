@@ -1,0 +1,26 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Simple Gaussian Elimination}
+    \begin{algorithmic}[1]
+      \Procedure{SimpleElimination}{$A,\ b,\ n$}
+        \State $Ab \gets augmentedMatrix(A,\ b)$
+        \For {$k = 1$ \textbf{to} $n - 1$}
+          \For {$i = k + 1$ \textbf{to} $n$}
+            \State $multiplier \gets Ab_{ik} / Ab_{kk}$
+            \For {$j = k$ \textbf{to} $n + 1$}
+              \State $Ab_{ij} \gets Ab_{ij} - multiplier * Ab_{kj}$
+            \EndFor
+          \EndFor
+        \EndFor
+        \State \textbf{return} $Ab$
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
