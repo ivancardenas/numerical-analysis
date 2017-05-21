@@ -12,8 +12,8 @@
         \State $x_{n} \gets Ab_{nn+1} / Ab_{nn}$
         \For {$i = n - 1$ \textbf{to} $1$ \textbf{step} $-1$}
           \State $summ \gets 0$
-          \For {$j = i + 1$ \textbf{to} $n$}
-            \State $summ \gets summ + Ab_{ij} * x_{j}$
+          \For {$p = i + 1$ \textbf{to} $n$}
+            \State $summ \gets summ + Ab_{ip} * x_{p}$
           \EndFor
           \State $x_{i} \gets (Ab_{in+1} - summ) / Ab_{ii}$
         \EndFor
