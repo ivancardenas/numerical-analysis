@@ -1,0 +1,32 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Partial Pivoting (Gaussian Elimination)}
+    \begin{algorithmic}[1]
+      \Procedure{PartialPivoting}{$Ab,\ n,\ k$}
+        \State $greater \gets |Ab_{kk}|$
+        \State $greaterRow \gets k$
+        \For {$p = k + 1$ \textbf{to} $n$}
+          \If {$|Ab_{pk}| > greater$}
+            \State $greater \gets |Ab_{pk}|$
+            \State $greaterRow \gets p$
+          \EndIf
+        \EndFor
+        \If {$greater = 0$}
+          \State \textbf{return} "The system has no single solution"
+        \Else
+          \If {$greaterRow \not= k$}
+            \State $Ab \gets swapRows(Ab,\ greaterRow,\ k)$
+          \EndIf
+          \State \textbf{return} $Ab$
+        \EndIf
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
