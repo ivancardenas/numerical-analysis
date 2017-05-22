@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Total Pivoting (Gaussian Elimination)}
+    \begin{algorithmic}[1]
+      \Procedure{TotalPivoting}{$Ab,\ n,\ k$}
+        \State $greater \gets 0$
+        \State $greaterRow \gets k$
+        \State $greaterCol \gets k$
+        \For {$p = k$ \textbf{to} $n$}
+          \For {$q = k$ \textbf{to} $n$}
+            \If {$|Ab_{pq}| > greater$}
+              \State $greater \gets |Ab_{pq}|$
+              \State $greaterRow \gets p$
+              \State $greaterCol \gets q$
+            \EndIf
+          \EndFor
+        \EndFor
+        \If {$greater = 0$}
+          \State \textbf{return} "The system has no single solution"
+        \Else
+          \If {$greaterCol \not= k$}
+            \State $Ab \gets swapCols(Ab,\ greaterCol,\ k)$
+            \State $pos \gets swapPos(pos,\ greaterCol,\ k)$
+          \EndIf
+          \If {$greaterRow \not= k$}
+            \State $Ab \gets swapRows(Ab,\ greaterRow,\ k)$
+          \EndIf
+          \State \textbf{return} $Ab,\ pos$
+        \EndIf
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
