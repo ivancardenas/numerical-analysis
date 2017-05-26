@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Progressive Substitution Function}
+    \begin{algorithmic}[1]
+      \Procedure{ProgressiveSubstitution}{$Ab,\ n$}
+        \State $x_{1} \gets Ab_{1n+1} / Ab_{11}$
+        \For {$i = 2$ \textbf{to} $n$ \textbf{step} $1$}
+          \State $summ \gets 0$
+          \For {$p = 1$ \textbf{to} $i - 1$}
+            \State $summ \gets summ + Ab_{ip} * x_{p}$
+          \EndFor
+          \State $x_{i} \gets (Ab_{in+1} - summ) / Ab_{ii}$
+        \EndFor
+        \State \textbf{return} $x$
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
