@@ -34,6 +34,7 @@
             \State $x_{m} \gets x_{i} - ((y_{i} * (x_{s} - x_{i})) / (y_{s} - y_{i}))$
             \State $y_{m} \gets f(x_{m})$
             \State $E \gets abs(x_{m} - x_{aux})$
+            \State $count \gets count + 1$
           \EndWhile
           \If {$y_{m} = 0$}
             \State \textbf{print} "$x_{m}$ is root"

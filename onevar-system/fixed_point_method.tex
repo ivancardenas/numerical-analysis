@@ -14,9 +14,9 @@
         \State $E \gets tol + 1$
         \While {$y \not= 0$ \textbf{ and } $E > tol$ \textbf{ and } $count < iter$}
           \State $x_{1} \gets g(x_{0})$
+          \State $y \gets f(x_{1})$
           \State $E \gets abs(x_{1} - x_{0})$
           \State $x_{0} \gets x_{1}$
-          \State $y \gets f(x_{0})$
           \State $count \gets count + 1$
         \EndWhile
         \If {$y = 0$}
