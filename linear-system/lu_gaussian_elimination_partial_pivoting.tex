@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{LU Factorization with Partial Pivoting (Gaussian Elimination)}
+    \begin{algorithmic}[1]
+      \Procedure{LUPartialPivoting}{$A$}
+        \For {$i = 1$ \textbf{to} $n$}
+          \State $marks[i] \gets i$
+        \EndFor
+        \For {$k = 0$ \textbf{to} $n - 1$}
+          \State $A,\ marks \gets pivoting(A,\ marks,\ n,\ k)$
+          \For {$i = k + 1$ \textbf{to} $n$}
+            \State $A_{ik} \gets A_{ik} / A_{kk}$
+            \For {$j = k + 1$ \textbf{to} $n + 1$}
+              \State $A_{ij} \gets A_{ij} - (A_{ik} * A_{kj})$
+            \EndFor
+          \EndFor
+        \EndFor
+        \State \textbf{return} $A,\ marks$
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
