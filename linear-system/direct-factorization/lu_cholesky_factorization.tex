@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Direct Factorization (Cholesky)}
+    \begin{algorithmic}[1]
+      \Procedure{Cholesky}{$A$}
+        \State $L,\ U \gets startLU(n)$
+        \For {$k = 1$ \textbf{to} $n$}
+          \State $summ \gets 0$
+          \For {$p = 1$ \textbf{to} $k - 1$}
+            \State $summ \gets summ + (l_{kp} * u_{pk})$
+          \EndFor
+          \State $l_{kk} \gets root(a_{kk} - summ)$
+          \State $u_{kk} \gets l_{kk}$
+          \For {$i = k + 1$ \textbf{to} $n$}
+            \State $summ \gets 0$
+            \For {$p = 1$ \textbf{to} $k - 1$}
+              \State $summ \gets summ + (l_{ip} * u_{pk})$
+            \EndFor
+            \State $l_{ik} \gets (a_{ik} - summ) / l_{kk}$
+          \EndFor
+          \For {$j = k + 1$ \textbf{to} $n$}
+            \State $summ \gets 0$
+            \For {$p = 1$ \textbf{to} $k - 1$}
+              \State $summ \gets summ + (l_{kp} * u_{pj})$
+            \EndFor
+            \State $u_{kj} \gets (a_{kj} - summ) / l_{kk}$
+          \EndFor
+        \EndFor
+        \State \textbf{return} $L,\ U$
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
