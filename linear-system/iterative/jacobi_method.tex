@@ -19,7 +19,7 @@
                 \State $summ \gets summ + (a_{ij} * x_{j}^{0})$
               \EndIf
             \EndFor
-            \State $x_{i}^{1} = (b_{i} - summ) / a_{ii}$
+            \State $x_{i}^{1} \gets (b_{i} - summ) / a_{ii}$
           \EndFor
           \State $E \gets norm(x^{1} - x^{0})$
           \State $x^{0} \gets x^{1}$
