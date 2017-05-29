@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Jacobi Method Relaxed}
+    \begin{algorithmic}[1]
+      \Procedure{JacobiRelaxed}{$tol,\ x^{0},\ iter,\ lambda$}
+        \State $count \gets 0$
+        \State $E \gets tol + 1$
+        \While {$E > tol$ \textbf{and} $count < iter$}
+          \For {$i = 1$ \textbf{to} $n$}
+            \State $summ \gets 0$
+            \For {$j = 1$ \textbf{to} $n$}
+              \If {$j \not= i$}
+                \State $summ \gets summ + (a_{ij} * x_{j}^{0})$
+              \EndIf
+            \EndFor
+            \State $x_{i}^{1} \gets (lambda * (b_{i} - summ) / a_{ii}) + (1 - lambda) * x_{i}^{0}$
+          \EndFor
+          \State $E \gets norm(x^{1} - x^{0})$
+          \State $x^{0} \gets x^{1}$
+          \State $count \gets count + 1$
+        \EndWhile
+        \If {$E < tol$}
+          \State \textbf{print} "$x^{1}$ is approximated by $E < tol$"
+        \Else
+            \State \textbf{print} "Failure"
+        \EndIf
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
