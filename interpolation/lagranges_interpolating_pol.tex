@@ -8,8 +8,22 @@
   \begin{algorithm}
     \caption{Lagrange's Interpolating Polynomial}
     \begin{algorithmic}[1]
-      \Procedure{LagrangesPolynomial}{$params$}
-
+      \Procedure{LagrangesPolynomial}{$points,\ n,\ x$}
+        \For {$i = 0$ \textbf{to} $n - 1$}
+          \State $solution \gets solution +
+            (points_{i * 2 + 1} * Lk(points,\ n,\ i,\ x))$
+        \EndFor
+        \State \textbf{return} solution
+      \EndProcedure
+      \Procedure{Lk}{$points,\ n,\ index,\ x$}
+        \State $divider \gets 1$
+        \For {$i = 0$ \textbf{to} $n - 1$}
+          \If {$i \not= index$}
+            \State $divider \gets divider * (points_{index * 2} - points_{i * 2})$
+            \State $equation \gets equation + (x - points_{i * 2})$
+          \EndIf
+        \EndFor
+        \State \textbf{return} equation / divider
       \EndProcedure
     \end{algorithmic}
   \end{algorithm}
