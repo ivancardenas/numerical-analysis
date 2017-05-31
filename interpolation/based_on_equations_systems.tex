@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+  \begin{algorithm}
+    \caption{Based on Equations Systems}
+    \begin{algorithmic}[1]
+      \Procedure{EquationsSystems}{$points,\ n,\ x$}
+        \For {$i = 0$ \textbf{to} $n - 1$}
+          \For {$j = 0$ \textbf{to} $n - 1$}
+            \State $a_{ij} \gets {points_{i*2}}^{n - j + 1}$
+          \EndFor
+          \State $b_{i} \gets points_{i * 2 + 1}$
+        \EndFor
+        \State $solution = solveSystem(a,\ b)$
+        \State $result \gets 0$
+        \For {$i = 0$ \textbf{to} $n - 1$}
+          \State $result \gets result + solution_{i} * x^{n - i - 1}$
+        \EndFor
+        \State \textbf{return} result
+      \EndProcedure
+    \end{algorithmic}
+  \end{algorithm}
+
+\end{document}
