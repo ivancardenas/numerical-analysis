@@ -8,8 +8,31 @@
   \begin{algorithm}
     \caption{Newton's Interpolating Polynomial}
     \begin{algorithmic}[1]
-      \Procedure{NewtonsPolynomial}{$params$}
-        
+      \Procedure{NewtonsPolynomial}{$points,\ n$}
+        \For {$i = 1$ \textbf{to} $n - 1$}
+          \State $divider \gets 1$
+          \For {$j = 0$ \textbf{to} $i - 1$}
+            \State $divider \gets divider * (points_{i * 2} - points_{i * 2})$
+          \EndFor
+          \If {$i = 1$}
+            \State $b_{i} \gets (points_{i * 2 + 1} - b_{0}) / divider$
+          \Else
+            \State $times \gets 1$
+            \For {$x = 0$ \textbf{to} $i - 1$}
+              \For {$y = 0$ \textbf{to} $x - 1$}
+                \State $times \gets times * (points_{i * 2} - points_{y * 2})$
+              \EndFor
+              \State $p_{x} \gets b_{x} * times$
+              \State $times \gets 1$
+            \EndFor
+            \State $summ \gets 0$
+            \For {$k = 0$ \textbf{to} $i - 1$}
+              \State $summ \gets summ - p_{k}$
+            \EndFor
+            \State $b_{i} \gets (points_{i * 2 + 1} + summ) / divider$
+          \EndIf
+        \EndFor
+        \State \textbf{return} b
       \EndProcedure
     \end{algorithmic}
   \end{algorithm}
