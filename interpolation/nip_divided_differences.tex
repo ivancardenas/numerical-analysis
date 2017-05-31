@@ -7,11 +7,20 @@
 
   \begin{algorithm}
     \caption{N.I.P with Divided Differences}
-    \begin{DividedDifferences}[1]
-      \Procedure{EquationsSystems}{$params$}
-
+    \begin{algorithmic}[1]
+      \Procedure{DividedDifferences}{$points,\ n$}
+        \For {$i = 0$ \textbf{to} $n - 1$}
+          \State $p_{i0} \gets points_{i * 2}$
+          \State $p_{i1} \gets points_{i * 2 + 1}$
+        \EndFor
+        \For {$j = 2$ \textbf{to} $n$}
+          \For {$i = j - 1$ \textbf{to} $n - 1$}
+            \State $p_{ij} \gets (p_{(i - 1)(j - 1)} - p_{(i)(j - 1)}) /
+            (p_{(i - j + 1)(0)} - p_{i0})$
+          \EndFor
+        \EndFor
+        \State \textbf{return} p
       \EndProcedure
     \end{algorithmic}
   \end{algorithm}
-
 \end{document}
